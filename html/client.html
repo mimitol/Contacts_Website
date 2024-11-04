@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/client.css">
+</head>
+
+<body id="body">
+    <nav>
+        <ul>
+            <li><a href="#signUp" id="signUpLink">sign Up</a></li>
+            <li><a href="#logIn" id="logInLink">log In</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <!-- //הרשמות -->
+        <template id="signUpTemplate">
+            <h2>signUp</h2>
+            <form id="signUpForm" onsubmit="submitNewUser()">
+                <label for="username">User name:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="passwordVerify">Verify Password:</label>
+                <input type="password" id="passwordVerify" name="passwordVerify" required
+                    onchange="checkVerifyPassword()">
+                <div id="show">
+                    <input type="checkbox" id="showCheckbox" onclick="showPassword()">
+                    <p>show me the password</p>
+                </div>
+                <button type="submit" id="btnSignUpSubmit">Sign Up</button>
+            </form>
+        </template>
+        <!-- //משתמש קיים -->
+        <template id="logInTemplate">
+            <h2>LogIn</h2>
+            <form id="logInForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="phone">phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div id="show">
+                    <input type="checkbox" id="showCheckbox" onclick="showPassword()">
+                    <p>show me the password</p>
+                </div>
+                <button type="submit" id="btnLogInSubmit" onclick="submitUser(event)">LogIn</button>
+            </form>
+        </template>
+        <!-- //הצגת אנשי קשר -->
+        <template id="contactsTemplate">
+            <h2 id="label"></h2>
+            <h3>Your contacts:</h3>
+            <div id="searchAndAdd">
+                <button id="addContactBtn" onclick="showContactForm()">Add Contact</button>
+                <div>
+                    <input type="text" id="search" placeholder="search...">
+                    <button onclick="showAllContacts(true) ">search</button>
+                    <button onclick="showAllContacts()">cancel search</button>
+                </div>
+
+            </div>
+
+            <table id="contactsTbl">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="contactsTbody"> </tbody>
+            </table>
+            <!-- טופס הוספת/עדכון איש קשר  -->
+            <form id="contactForm" novalidate>
+                <button onclick="closeContactForm(event)">x</button>
+                <h3 id="contactFormTitle"></h3>
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <button type="submit" id="addContactSubmit" onclick="submitContant(event)"></button>
+            </form>
+        </template>
+    </div>
+</body>
+<script src="../js/SPA.js"></script>
+<script src="../js/client.js"></script>
+<script src="../js/FxmlHttpRequest.js"></script>
+<script src="../js/network.js"></script>
+<script src="../js/server.js"></script>
+<script src="../js/DB.js"></script>
+
+</html>
